@@ -1,4 +1,4 @@
-package com.pocketm.domain.json.coah;
+package com.pocketm.domain.coah.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -7,6 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @ToString
@@ -15,10 +16,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideosHotelCoahJson {
+public class USPSHotelCoahJson {
 
-    @JacksonXmlElementWrapper(useWrapping = false)
-    private List<Video> video;
+    private HotelAttributes hotelAttributes;
 
     @ToString
     @Builder
@@ -26,72 +26,55 @@ public class VideosHotelCoahJson {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Video {
+    public static class HotelAttributes {
 
         @JsonUnwrapped
         @JsonProperty("@attributes")
-        private VideoNodeProperties properties;
+        private HotelNodeProperties properties;
 
-        private Urls urls;
+        @JacksonXmlElementWrapper(useWrapping = false)
+        private List<Attribute> attribute;
     }
-
     @ToString
     @Builder
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class VideoNodeProperties {
+    public static class HotelNodeProperties {
 
         @JacksonXmlProperty(isAttribute = true)
         private String source;
 
+    }
+
+    @ToString
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Attribute {
+
+        @JsonUnwrapped
+        @JsonProperty("@attributes")
+        private AttributeNodeProperties properties;
+
+        @JacksonXmlText
+        private String usp;
+    }
+
+    @ToString
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class AttributeNodeProperties {
         @JacksonXmlProperty(isAttribute = true)
         private int priority;
 
         @JacksonXmlProperty(isAttribute = true)
-        private boolean hasPlayer;
+        private BigDecimal rating;
     }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Urls {
-
-        @JacksonXmlElementWrapper(useWrapping = false)
-        private List<Url> url;
-    }
-
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Url {
-
-        @JsonUnwrapped
-        @JsonProperty("@attributes")
-        private UrlNodeProperties properties;
-
-        @JacksonXmlText
-        private String content;
-    }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UrlNodeProperties {
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String type;
-    }
-
 }

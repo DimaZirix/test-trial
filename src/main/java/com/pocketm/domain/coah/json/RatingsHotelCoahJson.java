@@ -1,4 +1,4 @@
-package com.pocketm.domain.xml.coah;
+package com.pocketm.domain.coah.json;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RatingsHotelCoahXml {
+public class RatingsHotelCoahJson {
 
     @JsonUnwrapped
     @JsonProperty("@attributes")

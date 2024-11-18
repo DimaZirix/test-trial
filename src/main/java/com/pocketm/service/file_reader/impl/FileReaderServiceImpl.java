@@ -1,7 +1,7 @@
 package com.pocketm.service.file_reader.impl;
 
-import com.pocketm.domain.json.coah.ContentCoahJson;
-import com.pocketm.domain.json.coah.RootCoahJson;
+import com.pocketm.domain.coah.json.ContentCoahJson;
+import com.pocketm.domain.coah.json.RootCoahJson;
 import com.pocketm.service.file_reader.FileReaderService;
 import com.pocketm.service.file_reader.JsonFileReaderService;
 import com.pocketm.service.file_reader.XmlFileReaderService;

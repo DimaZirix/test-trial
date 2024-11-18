@@ -1,4 +1,4 @@
-package com.pocketm.domain.xml.coah;
+package com.pocketm.domain.coah.xml;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -7,6 +7,7 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @ToString
@@ -15,9 +16,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class TextHotelCoahXml {
+public class USPSHotelCoahXml {
 
-    private Text text;
+    private HotelAttributes hotelAttributes;
 
     @ToString
     @Builder
@@ -25,40 +26,26 @@ public class TextHotelCoahXml {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Text {
+    public static class HotelAttributes {
 
         @JsonUnwrapped
         @JsonProperty("@attributes")
-        private TextNodeProperties properties;
+        private HotelNodeProperties properties;
 
         @JacksonXmlElementWrapper(useWrapping = false)
-        private List<Paragraph> paragraph;
-
-        private String copyrightText;
+        private List<Attribute> attribute;
     }
-
     @ToString
     @Builder
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class TextNodeProperties {
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String tourOperator;
+    public static class HotelNodeProperties {
 
         @JacksonXmlProperty(isAttribute = true)
         private String source;
 
-        @JacksonXmlProperty(isAttribute = true)
-        private String tourOperatorLong;
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String id;
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String name;
     }
 
     @ToString
@@ -67,15 +54,27 @@ public class TextHotelCoahXml {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Paragraph {
+    public static class Attribute {
 
-        @JacksonXmlProperty(isAttribute = true)
-        private String headline;
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String description;
+        @JsonUnwrapped
+        @JsonProperty("@attributes")
+        private AttributeNodeProperties properties;
 
         @JacksonXmlText
-        private String content;
+        private String usp;
+    }
+
+    @ToString
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class AttributeNodeProperties {
+        @JacksonXmlProperty(isAttribute = true)
+        private int priority;
+
+        @JacksonXmlProperty(isAttribute = true)
+        private BigDecimal rating;
     }
 }

@@ -1,0 +1,1 @@
+package com.pocketm.domain.json;

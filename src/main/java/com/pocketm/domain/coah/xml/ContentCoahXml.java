@@ -1,6 +1,5 @@
-package com.pocketm.domain.xml.coah;
+package com.pocketm.domain.coah.xml;
 
-import com.pocketm.domain.json.coah.HotelCoahJson;
 import lombok.*;
 
 @ToString
@@ -11,6 +10,6 @@ import lombok.*;
 @NoArgsConstructor
 public class ContentCoahXml {
 
-    private HotelCoahJson hotel;
+    private HotelCoahXml hotel;
 
 }

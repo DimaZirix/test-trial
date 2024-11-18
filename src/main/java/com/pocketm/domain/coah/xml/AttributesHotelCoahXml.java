@@ -1,4 +1,4 @@
-package com.pocketm.domain.xml.coah;
+package com.pocketm.domain.coah.xml;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -15,10 +15,14 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideosHotelCoahXml {
+public class AttributesHotelCoahXml {
+
+    @JsonUnwrapped
+    @JsonProperty("@attributes")
+    private AttributesNodeProperties properties;
 
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<Video> video;
+    private List<Category> category;
 
     @ToString
     @Builder
@@ -26,31 +30,11 @@ public class VideosHotelCoahXml {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Video {
-
-        @JsonUnwrapped
-        @JsonProperty("@attributes")
-        private VideoNodeProperties properties;
-
-        private Urls urls;
-    }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class VideoNodeProperties {
+    public static class AttributesNodeProperties {
 
         @JacksonXmlProperty(isAttribute = true)
         private String source;
 
-        @JacksonXmlProperty(isAttribute = true)
-        private int priority;
-
-        @JacksonXmlProperty(isAttribute = true)
-        private boolean hasPlayer;
     }
 
     @ToString
@@ -59,39 +43,38 @@ public class VideosHotelCoahXml {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Urls {
-
-        @JacksonXmlElementWrapper(useWrapping = false)
-        private List<Url> url;
-    }
-
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Url {
+    public static class Category {
 
         @JsonUnwrapped
         @JsonProperty("@attributes")
-        private UrlNodeProperties properties;
+        private CategoryNodeProperties properties;
+
+        @JacksonXmlElementWrapper(useWrapping = false)
+        private List<Object> attribute;
+    }
+
+    @ToString
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class CategoryNodeProperties {
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String name;
+
+    }
+
+    @ToString
+    @Builder
+    @Getter
+    @Setter
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class Attribute {
 
         @JacksonXmlText
         private String content;
     }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UrlNodeProperties {
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String type;
-    }
-
 }

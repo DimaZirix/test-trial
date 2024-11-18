@@ -1,4 +1,4 @@
-package com.pocketm.domain.json.coah;
+package com.pocketm.domain.coah.json;
 
 import lombok.*;
 
