@@ -2,7 +2,6 @@ package com.pocketm;
 
 import com.pocketm.service.converter.FileConverterService;
 import io.micronaut.configuration.picocli.PicocliRunner;
-
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 
