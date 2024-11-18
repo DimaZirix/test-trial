@@ -1,4 +1,4 @@
-package com.pocketm.domain.nodes.coah;
+package com.pocketm.domain.json.coah;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
@@ -13,7 +13,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class HotelCoahNode {
+public class HotelCoahJson {
 
     @JsonProperty("giata_id")
     private int giataId;
@@ -26,7 +26,7 @@ public class HotelCoahNode {
 
     private BigDecimal longitude;
 
-    private AddressHotelCoahNode address;
+    private AddressHotelCoahJson address;
 
     private String phone;
 
@@ -45,20 +45,20 @@ public class HotelCoahNode {
     @JsonProperty("country_name")
     private String countryName;
 
-    private TextHotelCoahNode texts;
+    private TextHotelCoahJson texts;
 
-    private USPSHotelCoahNode usps;
+    private USPSHotelCoahJson usps;
 
     @JacksonXmlElementWrapper(useWrapping = false)
     private List<Object> additionalTexts;
 
-    private ImagesHotelCoahNode images;
+    private ImagesHotelCoahJson images;
 
-    private VideosHotelCoahNode videos;
+    private VideosHotelCoahJson videos;
 
-    private AttributesHotelCoahNode attributes;
+    private AttributesHotelCoahJson attributes;
 
-    private RatingsHotelCoahNode ratings;
+    private RatingsHotelCoahJson ratings;
 
     @JacksonXmlElementWrapper(useWrapping = false)
     private List<Object> hotelAwards;

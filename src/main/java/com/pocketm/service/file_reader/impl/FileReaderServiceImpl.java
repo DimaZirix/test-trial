@@ -1,7 +1,7 @@
 package com.pocketm.service.file_reader.impl;
 
-import com.pocketm.domain.nodes.coah.ContentCoahNode;
-import com.pocketm.domain.nodes.coah.RootCoahNode;
+import com.pocketm.domain.json.coah.ContentCoahJson;
+import com.pocketm.domain.json.coah.RootCoahJson;
 import com.pocketm.service.file_reader.FileReaderService;
 import com.pocketm.service.file_reader.JsonFileReaderService;
 import com.pocketm.service.file_reader.XmlFileReaderService;
@@ -26,11 +26,11 @@ public class FileReaderServiceImpl implements FileReaderService {
         final var baseName = FilenameUtils.getBaseName(file.getName()).toLowerCase();
 
         if (ext.equals("xml") && baseName.endsWith("coah")) {
-            return xmlFileReaderService.read(file, ContentCoahNode.class);
+            return xmlFileReaderService.read(file, ContentCoahJson.class);
         } else if (ext.equals("xml") && baseName.endsWith("giata")) {
-            return jsonFileReaderService.read(file, RootCoahNode.class);
+            return jsonFileReaderService.read(file, RootCoahJson.class);
         } else if (ext.equals("json") && baseName.endsWith("coah")) {
-            return jsonFileReaderService.read(file, RootCoahNode.class);
+            return jsonFileReaderService.read(file, RootCoahJson.class);
         } else if (ext.equals("json") && baseName.endsWith("giata")) {
             throw new UnsupportedOperationException();
         } else {

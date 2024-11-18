@@ -1,4 +1,4 @@
-package com.pocketm.domain.nodes.coah;
+package com.pocketm.domain.json.coah;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -7,7 +7,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.util.List;
 
 @ToString
@@ -16,9 +15,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class USPSHotelCoahNode {
+public class TextHotelCoahJson {
 
-    private HotelAttributes hotelAttributes;
+    private Text text;
 
     @ToString
     @Builder
@@ -26,26 +25,40 @@ public class USPSHotelCoahNode {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class HotelAttributes {
+    public static class Text {
 
         @JsonUnwrapped
         @JsonProperty("@attributes")
-        private HotelNodeProperties properties;
+        private TextNodeProperties properties;
 
         @JacksonXmlElementWrapper(useWrapping = false)
-        private List<Attribute> attribute;
+        private List<Paragraph> paragraph;
+
+        private String copyrightText;
     }
+
     @ToString
     @Builder
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class HotelNodeProperties {
+    public static class TextNodeProperties {
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String tourOperator;
 
         @JacksonXmlProperty(isAttribute = true)
         private String source;
 
+        @JacksonXmlProperty(isAttribute = true)
+        private String tourOperatorLong;
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String id;
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String name;
     }
 
     @ToString
@@ -54,27 +67,15 @@ public class USPSHotelCoahNode {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Attribute {
+    public static class Paragraph {
 
-        @JsonUnwrapped
-        @JsonProperty("@attributes")
-        private AttributeNodeProperties properties;
+        @JacksonXmlProperty(isAttribute = true)
+        private String headline;
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String description;
 
         @JacksonXmlText
-        private String usp;
-    }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class AttributeNodeProperties {
-        @JacksonXmlProperty(isAttribute = true)
-        private int priority;
-
-        @JacksonXmlProperty(isAttribute = true)
-        private BigDecimal rating;
+        private String content;
     }
 }

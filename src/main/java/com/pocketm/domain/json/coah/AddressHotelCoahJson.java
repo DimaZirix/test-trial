@@ -1,4 +1,4 @@
-package com.pocketm.domain.nodes.coah;
+package com.pocketm.domain.json.coah;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import lombok.*;
@@ -11,7 +11,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AddressHotelCoahNode {
+public class AddressHotelCoahJson {
 
     private String zip;
 

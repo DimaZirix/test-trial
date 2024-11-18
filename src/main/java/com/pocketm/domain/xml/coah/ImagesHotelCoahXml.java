@@ -1,4 +1,4 @@
-package com.pocketm.domain.nodes.coah;
+package com.pocketm.domain.xml.coah;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ImagesHotelCoahNode {
+public class ImagesHotelCoahXml {
 
     @JsonUnwrapped
     @JsonProperty("@attributes")
