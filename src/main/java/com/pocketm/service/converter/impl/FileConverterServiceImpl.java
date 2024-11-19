@@ -17,7 +17,8 @@ public class FileConverterServiceImpl implements FileConverterService {
     public void convert() {
         final var value = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/594608-coah.json"));
         final var value2 = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/3956-coah.xml"));
+        final var value3 = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/3956-giata.xml"));
 
-        System.out.println(value);
+        System.out.println(value3);
     }
 }

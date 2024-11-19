@@ -1,7 +1,10 @@
 package com.pocketm.service.file_reader.impl;
 
-import com.pocketm.domain.coah.json.ContentCoahJson;
-import com.pocketm.domain.coah.json.RootCoahJson;
+import com.pocketm.domain.source.Source;
+import com.pocketm.domain.source.coah.json.ContentCoahJson;
+import com.pocketm.domain.source.coah.json.RootCoahJson;
+import com.pocketm.domain.source.coah.xml.ContentCoahXml;
+import com.pocketm.domain.source.giata.xml.ResultGiataXml;
 import com.pocketm.service.file_reader.FileReaderService;
 import com.pocketm.service.file_reader.JsonFileReaderService;
 import com.pocketm.service.file_reader.XmlFileReaderService;
@@ -21,14 +24,14 @@ public class FileReaderServiceImpl implements FileReaderService {
     private JsonFileReaderService jsonFileReaderService;
 
     @Override
-    public Object read(final File file) {
+    public Source read(final File file) {
         final var ext = FilenameUtils.getExtension(file.getName()).toLowerCase();
         final var baseName = FilenameUtils.getBaseName(file.getName()).toLowerCase();
 
         if (ext.equals("xml") && baseName.endsWith("coah")) {
-            return xmlFileReaderService.read(file, ContentCoahJson.class);
+            return xmlFileReaderService.read(file, ContentCoahXml.class);
         } else if (ext.equals("xml") && baseName.endsWith("giata")) {
-            return jsonFileReaderService.read(file, RootCoahJson.class);
+            return xmlFileReaderService.read(file, ResultGiataXml.class);
         } else if (ext.equals("json") && baseName.endsWith("coah")) {
             return jsonFileReaderService.read(file, RootCoahJson.class);
         } else if (ext.equals("json") && baseName.endsWith("giata")) {
