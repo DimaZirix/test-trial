@@ -7,9 +7,11 @@ import com.pocketm.service.converter.ImageConverterService;
 import com.pocketm.service.source.SourceReaderService;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
+import lombok.extern.slf4j.Slf4j;
 
 import java.nio.file.Path;
 
+@Slf4j
 @Singleton
 public class FileConverterServiceImpl implements FileConverterService {
 
@@ -24,6 +26,8 @@ public class FileConverterServiceImpl implements FileConverterService {
 
     @Override
     public ContentDTO convert(final int id, final Path sourcePath, final Path imagePath) {
+        log.info("Converting files with ID {}", id);
+
         final var source = sourceReaderService.read(id, sourcePath);
 
         final var content = contentConverterService.convert(id, source);

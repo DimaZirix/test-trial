@@ -5,6 +5,7 @@ import com.pocketm.domain.dto.hotel.ImagesHotelDTO;
 import com.pocketm.service.converter.ImageConverterService;
 import jakarta.inject.Singleton;
 import lombok.SneakyThrows;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -13,6 +14,7 @@ import java.nio.file.Path;
 import java.util.Objects;
 import java.util.UUID;
 
+@Slf4j
 @Singleton
 public class ImageConverterServiceImpl implements ImageConverterService {
 
@@ -30,6 +32,8 @@ public class ImageConverterServiceImpl implements ImageConverterService {
             return;
         }
 
+        log.info("Downloading images for file ID {}. Image count: {}", content.getFileId(), imagesList.size());
+
         int localFileId = 0;
         for (final var image : imagesList) {
             download(image, localFileId++, content.getFileId(), imagePath);
@@ -44,6 +48,8 @@ public class ImageConverterServiceImpl implements ImageConverterService {
 
         final var localFileName = contentFileId + "-" + localFileId;
         final var file = Path.of(imagePath.toString(), localFileName).toFile();
+
+        log.info("Downloading file {} from {}", localFileName, image.getUrl());
 
         final var url = new URI(image.getUrl()).toURL();
         FileUtils.copyURLToFile(url, file, READ_TIMEOUT, READ_TIMEOUT); // TODO: replace with a http client. Get the EXT or the ContentType of the remote file.
