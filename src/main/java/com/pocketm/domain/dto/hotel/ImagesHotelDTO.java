@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -55,8 +55,6 @@ public class ImagesHotelDTO {
         private int priority;
 
         private String title;
-
-        private String source;
 
         private String alt;
 

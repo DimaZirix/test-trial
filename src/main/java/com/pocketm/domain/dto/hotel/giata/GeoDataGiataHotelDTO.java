@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto.giata;
+package com.pocketm.domain.dto.hotel.giata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

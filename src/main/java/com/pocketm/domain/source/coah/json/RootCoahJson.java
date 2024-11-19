@@ -1,6 +1,5 @@
 package com.pocketm.domain.source.coah.json;
 
-import com.pocketm.domain.source.Source;
 import lombok.*;
 
 @ToString
@@ -9,7 +8,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class RootCoahJson implements Source {
+public class RootCoahJson {
 
     private ContentCoahJson content;
 

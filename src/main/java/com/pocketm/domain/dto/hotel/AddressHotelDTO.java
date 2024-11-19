@@ -1,7 +1,6 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import lombok.*;
 
 import java.util.List;

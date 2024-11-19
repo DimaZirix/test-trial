@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto.giata;
+package com.pocketm.domain.dto.hotel.giata;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlText;

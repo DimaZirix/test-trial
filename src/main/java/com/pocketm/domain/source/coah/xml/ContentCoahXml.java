@@ -1,5 +1,6 @@
 package com.pocketm.domain.source.coah.xml;
 
+import com.pocketm.domain.source.CoahSource;
 import com.pocketm.domain.source.Source;
 import lombok.*;
 
@@ -9,7 +10,7 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ContentCoahXml implements Source {
+public class ContentCoahXml implements CoahSource {
 
     private HotelCoahXml hotel;
 

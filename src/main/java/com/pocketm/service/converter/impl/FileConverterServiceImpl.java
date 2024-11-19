@@ -1,24 +1,53 @@
 package com.pocketm.service.converter.impl;
 
+import com.pocketm.domain.dto.hotel.ContentDTO;
+import com.pocketm.domain.dto.hotel.giata.GiataHotelDTO;
+import com.pocketm.domain.source.coah.json.ContentCoahJson;
+import com.pocketm.domain.source.coah.xml.ContentCoahXml;
+import com.pocketm.domain.source.giata.xml.ResultGiataXml;
+import com.pocketm.mapper.ContentCoahMapper;
+import com.pocketm.mapper.GiataMapper;
 import com.pocketm.service.converter.FileConverterService;
-import com.pocketm.service.file_reader.FileReaderService;
+import com.pocketm.service.source.SourceReaderService;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 
-import java.io.File;
+import java.nio.file.Path;
 
 @Singleton
 public class FileConverterServiceImpl implements FileConverterService {
 
     @Inject
-    private FileReaderService fileReaderService;
+    private SourceReaderService sourceReaderService;
+
+    @Inject
+    private ContentCoahMapper contentCoahMapper;
+
+    @Inject
+    private GiataMapper giataMapper;
 
     @Override
-    public void convert() {
-        final var value = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/594608-coah.json"));
-        final var value2 = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/3956-coah.xml"));
-        final var value3 = fileReaderService.read(new File("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/3956-giata.xml"));
+    public ContentDTO convert(final int id, final Path path) {
+        final var source = sourceReaderService.read(id, path);
 
-        System.out.println(value3);
+        final GiataHotelDTO giataHotelDTO;
+        if (source.getGiata() instanceof ResultGiataXml giata) {
+            giataHotelDTO = giataMapper.toDTO(giata);
+        } else {
+            throw new RuntimeException("It will never happen");
+        }
+
+        final ContentDTO result;
+        if (source.getCoah() instanceof ContentCoahXml coah) {
+            result = contentCoahMapper.toDTO(coah);
+        } else if (source.getCoah() instanceof ContentCoahJson coah) {
+            result = contentCoahMapper.toDTO(coah);
+        } else {
+            throw new RuntimeException("It will never happen");
+        }
+
+        result.getHotel().setGiata(giataHotelDTO);
+
+        return result;
     }
 }

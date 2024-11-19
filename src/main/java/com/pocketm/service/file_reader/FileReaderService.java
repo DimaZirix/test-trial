@@ -5,5 +5,5 @@ import com.pocketm.domain.source.Source;
 import java.io.File;
 
 public interface FileReaderService {
-    Source read(File file);
+    <T extends Source> T read(File file);
 }

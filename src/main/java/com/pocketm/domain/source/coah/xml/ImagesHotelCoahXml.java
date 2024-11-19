@@ -56,8 +56,6 @@ public class ImagesHotelCoahXml {
 
         private String title;
 
-        private String source;
-
         private String alt;
 
         private String category;

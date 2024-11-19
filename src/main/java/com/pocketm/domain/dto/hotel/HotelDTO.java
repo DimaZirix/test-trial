@@ -1,8 +1,8 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
-import com.pocketm.domain.dto.giata.GiataHotelDTO;
+import com.pocketm.domain.dto.hotel.giata.GiataHotelDTO;
 import lombok.*;
 
 import java.math.BigDecimal;

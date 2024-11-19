@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;

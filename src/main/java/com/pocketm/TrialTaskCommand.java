@@ -5,6 +5,8 @@ import io.micronaut.configuration.picocli.PicocliRunner;
 import jakarta.inject.Inject;
 import picocli.CommandLine.Command;
 
+import java.nio.file.Path;
+
 @Command(name = "trial-task", description = "Trial Task. Dmitrii Piniaskin", mixinStandardHelpOptions = true)
 public class TrialTaskCommand implements Runnable {
 
@@ -16,6 +18,6 @@ public class TrialTaskCommand implements Runnable {
     }
 
     public void run() {
-        fileConverterService.convert();
+        fileConverterService.convert(3956, Path.of("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data"));
     }
 }

@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
@@ -15,10 +15,9 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class VideosHotelDTO {
+public class TextHotelDTO {
 
-    @JacksonXmlElementWrapper(useWrapping = false)
-    private List<Video> video;
+    private Text text;
 
     @ToString
     @Builder
@@ -26,13 +25,16 @@ public class VideosHotelDTO {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Video {
+    public static class Text {
 
         @JsonUnwrapped
         @JsonProperty("@attributes")
-        private VideoNodeProperties properties;
+        private TextNodeProperties properties;
 
-        private Urls urls;
+        @JacksonXmlElementWrapper(useWrapping = false)
+        private List<Paragraph> paragraph;
+
+        private String copyrightText;
     }
 
     @ToString
@@ -41,16 +43,22 @@ public class VideosHotelDTO {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class VideoNodeProperties {
+    public static class TextNodeProperties {
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String tourOperator;
 
         @JacksonXmlProperty(isAttribute = true)
         private String source;
 
         @JacksonXmlProperty(isAttribute = true)
-        private int priority;
+        private String tourOperatorLong;
 
         @JacksonXmlProperty(isAttribute = true)
-        private boolean hasPlayer;
+        private String id;
+
+        @JacksonXmlProperty(isAttribute = true)
+        private String name;
     }
 
     @ToString
@@ -59,39 +67,15 @@ public class VideosHotelDTO {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
-    public static class Urls {
+    public static class Paragraph {
 
-        @JacksonXmlElementWrapper(useWrapping = false)
-        private List<Url> url;
-    }
+        @JacksonXmlProperty(isAttribute = true)
+        private String headline;
 
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class Url {
-
-        @JsonUnwrapped
-        @JsonProperty("@attributes")
-        private UrlNodeProperties properties;
+        @JacksonXmlProperty(isAttribute = true)
+        private String description;
 
         @JacksonXmlText
         private String content;
     }
-
-    @ToString
-    @Builder
-    @Getter
-    @Setter
-    @AllArgsConstructor
-    @NoArgsConstructor
-    public static class UrlNodeProperties {
-
-        @JacksonXmlProperty(isAttribute = true)
-        private String type;
-    }
-
 }

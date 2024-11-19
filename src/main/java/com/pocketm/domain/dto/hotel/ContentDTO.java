@@ -1,4 +1,4 @@
-package com.pocketm.domain.dto;
+package com.pocketm.domain.dto.hotel;
 
 import lombok.*;
 
