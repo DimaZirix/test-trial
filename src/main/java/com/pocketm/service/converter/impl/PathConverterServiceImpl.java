@@ -56,6 +56,7 @@ public class PathConverterServiceImpl implements PathConverterService {
                 .map(p -> p.replaceAll("^([0-9]+)-(coah|giata)\\.(xml|json)$", "$1"))
                 .filter(p -> !p.isBlank())
                 .map(Integer::parseInt)
+                .distinct()
                 .toList();
         } catch (IOException e) {
             throw new RuntimeException(e);
