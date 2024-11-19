@@ -51,7 +51,7 @@ public class ImageConverterServiceImpl implements ImageConverterService {
 
         log.info("Downloading file {} from {}", localFileName, image.getUrl());
 
-        final var url = new URI(image.getUrl()).toURL();
+        final var url = new URI(image.getUrl().strip()).toURL();
         FileUtils.copyURLToFile(url, file, READ_TIMEOUT, READ_TIMEOUT); // TODO: replace with a http client. Get the EXT or the ContentType of the remote file.
 
         image.setLocalFileName(localFileName);

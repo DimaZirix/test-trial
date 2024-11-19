@@ -1,5 +1,6 @@
 package com.pocketm.mapper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pocketm.domain.dto.hotel.ContentDTO;
 import com.pocketm.domain.source.coah.json.ContentCoahJson;
 import com.pocketm.domain.source.coah.xml.ContentCoahXml;
@@ -13,14 +14,20 @@ public class ContentCoahMapper {
     private HotelCoahMapper hotelCoahMapper;
 
     public ContentDTO toDTO(ContentCoahXml source) {
-        return ContentDTO.builder()
-            .hotel(hotelCoahMapper.toDTO(source.getHotel()))
-            .build();
+        final var mapper = new ObjectMapper();
+        return mapper.convertValue(source, ContentDTO.class);
+
+//        return ContentDTO.builder()
+//            .hotel(hotelCoahMapper.toDTO(source.getHotel()))
+//            .build();
     }
 
     public ContentDTO toDTO(ContentCoahJson source) {
-        return ContentDTO.builder()
-            .hotel(hotelCoahMapper.toDTO(source.getHotel()))
-            .build();
+        final var mapper = new ObjectMapper();
+        return mapper.convertValue(source, ContentDTO.class);
+
+//        return ContentDTO.builder()
+//            .hotel(hotelCoahMapper.toDTO(source.getHotel()))
+//            .build();
     }
 }

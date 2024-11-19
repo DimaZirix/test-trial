@@ -10,11 +10,29 @@ public class AddressCoahMapper {
 
     public AddressHotelDTO toDTO(AddressHotelCoahXml source) {
         return AddressHotelDTO.builder()
+            .zip(source.getZip())
+            .city(source.getCity())
+            .country(source.getCountry())
             .build();
     }
 
     public AddressHotelDTO toDTO(AddressHotelCoahJson source) {
         return AddressHotelDTO.builder()
+            .zip(source.getZip())
+            .city(source.getCity())
+            .country(source.getCountry())
+            .build();
+    }
+
+    public AddressHotelDTO.Formatted toDTO(AddressHotelCoahXml.Formatted source) {
+        return AddressHotelDTO.Formatted.builder()
+            .line(source.getLine())
+            .build();
+    }
+
+    public AddressHotelDTO.Formatted toDTO(AddressHotelCoahJson.Formatted source) {
+        return AddressHotelDTO.Formatted.builder()
+            .line(source.getLine())
             .build();
     }
 }

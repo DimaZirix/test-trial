@@ -52,6 +52,8 @@ public class ImagesHotelDTO {
     @NoArgsConstructor
     public static class Image {
 
+        private String source;
+
         private String localFileName;
 
         private Integer priority;

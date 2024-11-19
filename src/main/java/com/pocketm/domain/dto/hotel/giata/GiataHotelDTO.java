@@ -87,7 +87,7 @@ public class GiataHotelDTO {
     private Integer kataloghotelID;
 
     @JsonProperty("KatalogSaisonTyp")
-    private Integer katalogSaisonTyp;
+    private String katalogSaisonTyp;
 
     //@JsonProperty("Bildfile")
     //private BildfileGiataHotelDTO bildfile;
