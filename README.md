@@ -1,8 +1,7 @@
 ## The Trial App
-The task description is very short and does not contain all the necessary information, 
-so I implemented it in my own way.
+The task description is very short, so I implemented it in my own way.
 
-If I had received this task at work, I would have requested detailed information about:
+The necessary information I would have requested before starting work:
 1. Description/schema of the XML/JSON files
 2. Format of the expected JSON file.
 3. information about a similar project in order to reuse the existing code 
