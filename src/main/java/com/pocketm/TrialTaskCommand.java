@@ -20,7 +20,8 @@ public class TrialTaskCommand implements Runnable {
     public void run() {
         pathConverterService.convert(
             Path.of("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data"),
-            Path.of("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/output.json")
+            Path.of("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/output.json"),
+            Path.of("/home/user/Documents/space/personal/projects/trial_task/src/main/resources/test_data/images")
         );
     }
 }

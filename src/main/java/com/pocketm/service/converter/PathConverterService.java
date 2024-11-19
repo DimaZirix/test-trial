@@ -4,6 +4,6 @@ import java.nio.file.Path;
 
 public interface PathConverterService {
 
-   void convert(Path sourcePath, Path destFile);
+   void convert(Path sourcePath, Path destFile, Path imagePath);
 
 }

@@ -17,11 +17,11 @@ public class SourceReaderServiceImpl implements SourceReaderService {
     private FileReaderService fileReaderService;
 
     @Override
-    public SourceContentDTO read(final int id, final Path path) {
-        final var coahXMLFile = Path.of(path.toString(), id + "-coah.xml").toFile();
-        final var coahJson = Path.of(path.toString(), id + "-coah.json").toFile();
-        final var giataXmlFile = Path.of(path.toString(), id + "-giata.xml").toFile();
-        final var giataJsonFile = Path.of(path.toString(), id + "-giata.json").toFile();
+    public SourceContentDTO read(final int id, final Path sourcePath) {
+        final var coahXMLFile = Path.of(sourcePath.toString(), id + "-coah.xml").toFile();
+        final var coahJson = Path.of(sourcePath.toString(), id + "-coah.json").toFile();
+        final var giataXmlFile = Path.of(sourcePath.toString(), id + "-giata.xml").toFile();
+        final var giataJsonFile = Path.of(sourcePath.toString(), id + "-giata.json").toFile();
 
         final CoahSource coah;
         final GiataSource giata;

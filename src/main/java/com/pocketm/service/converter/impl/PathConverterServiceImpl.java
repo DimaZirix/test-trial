@@ -1,5 +1,6 @@
 package com.pocketm.service.converter.impl;
 
+import com.pocketm.domain.JsonFileContext;
 import com.pocketm.service.converter.FileConverterService;
 import com.pocketm.service.converter.PathConverterService;
 import com.pocketm.service.file_writer.FileWriterService;
@@ -14,6 +15,8 @@ import java.util.List;
 @Singleton
 public class PathConverterServiceImpl implements PathConverterService {
 
+    private final Object syncObject = new Object();
+
     @Inject
     private FileConverterService fileConverterService;
 
@@ -21,24 +24,27 @@ public class PathConverterServiceImpl implements PathConverterService {
     private FileWriterService fileWriterService;
 
     @Override
-    public void convert(final Path sourcePath, final Path destFile) {
+    public void convert(final Path sourcePath, final Path destFile, final Path imagePath) {
         final var file = fileWriterService.create(destFile);
 
         final var fileIdsList = getFileIdList(sourcePath);
 
-        for (final int fileId : fileIdsList) {
-            final var content = fileConverterService.convert(fileId, sourcePath);
-
-            fileWriterService.write(content, file);
-        }
+        fileIdsList.parallelStream().forEach(fileId -> convertFile(fileId, file, sourcePath, imagePath));
 
         fileWriterService.close(file);
     }
 
+    private void convertFile(final int fileId, final JsonFileContext file, final Path sourcePath, final Path imagePath) {
+        synchronized (syncObject) {
+            final var content = fileConverterService.convert(fileId, sourcePath, imagePath);
+
+            fileWriterService.write(content, file);
+        }
+    }
+
     private List<Integer> getFileIdList(final Path path) {
-        try {
-            return Files.list(path)
-                .map(p -> p.toFile().getName())
+        try (final var list = Files.list(path)) {
+            return list.map(p -> p.toFile().getName())
                 .filter(p -> p.matches("^([0-9]+)-(coah|giata)\\.(xml|json)$"))
                 .map(p -> p.replaceAll("^([0-9]+)-(coah|giata)\\.(xml|json)$", "$1"))
                 .filter(p -> !p.isBlank())

@@ -4,8 +4,6 @@ import com.pocketm.domain.dto.hotel.ContentDTO;
 
 import java.nio.file.Path;
 
-public interface FileConverterService {
-
-   ContentDTO convert(int id, Path sourcePath, Path imagePath);
-
+public interface ImageConverterService {
+    void convert(ContentDTO content, Path imagePath);
 }
