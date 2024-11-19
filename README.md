@@ -8,6 +8,8 @@ The necessary information I would have requested before starting work:
     and make the project in accordance with the style of the existing project.
 4. information about the sizes and the number of files that will have to be processed.
 
+TODO: tests. I prefer the TDD
+
 ## Command line Arguments
 app.jar --source-path ./test_data --dest-file ./test_data/output.json --image-path ./test_data/images
 
