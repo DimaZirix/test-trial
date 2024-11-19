@@ -52,7 +52,7 @@ public class ImagesHotelCoahXml {
     @NoArgsConstructor
     public static class Image {
 
-        private int priority;
+        private Integer priority;
 
         private String title;
 
@@ -60,9 +60,9 @@ public class ImagesHotelCoahXml {
 
         private String category;
 
-        private int width;
+        private Integer width;
 
-        private int height;
+        private Integer height;
 
         private String url;
     }

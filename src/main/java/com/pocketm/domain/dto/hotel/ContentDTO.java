@@ -10,6 +10,8 @@ import lombok.*;
 @NoArgsConstructor
 public class ContentDTO {
 
+    private Integer fileId;
+
     private HotelDTO hotel;
 
 }

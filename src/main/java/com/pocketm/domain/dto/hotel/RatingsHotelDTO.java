@@ -20,14 +20,14 @@ public class RatingsHotelDTO {
     private RatingsNodeProperties properties;
 
     @JsonProperty("hc_id")
-    private int hcId;
+    private Integer hcId;
 
     @JsonProperty("recommendation_rate")
     private BigDecimal recommendationRate;
 
     private BigDecimal rating;
 
-    private int reviews;
+    private Integer reviews;
 
     private String url;
 

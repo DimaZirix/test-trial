@@ -13,6 +13,7 @@ public class GiataMapper {
 
     public GiataHotelDTO toDTO(ResultGiataXml source) {
         return GiataHotelDTO.builder()
-              .build();
+            .hotelname(source.getData().getHotelname())
+            .build();
     }
 }

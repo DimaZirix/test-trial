@@ -30,7 +30,7 @@ public class HotelCoahMapper {
     @Inject
     private RatingsCoahMapper ratingsCoahMapper;
 
-    public HotelDTO toDTO(HotelCoahXml source) {
+    public HotelDTO toDTO(final HotelCoahXml source) {
         return HotelDTO.builder()
             .giataId(source.getGiataId())
             .iff(source.getIff())
@@ -57,7 +57,7 @@ public class HotelCoahMapper {
             .build();
     }
 
-    public HotelDTO toDTO(HotelCoahJson source) {
+    public HotelDTO toDTO(final HotelCoahJson source) {
         return HotelDTO.builder()
             .giataId(source.getGiataId())
             .iff(source.getIff())

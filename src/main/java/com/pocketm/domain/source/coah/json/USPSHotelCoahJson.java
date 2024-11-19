@@ -72,7 +72,7 @@ public class USPSHotelCoahJson {
     @NoArgsConstructor
     public static class AttributeNodeProperties {
         @JacksonXmlProperty(isAttribute = true)
-        private int priority;
+        private Integer priority;
 
         @JacksonXmlProperty(isAttribute = true)
         private BigDecimal rating;

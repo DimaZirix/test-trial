@@ -16,9 +16,9 @@ import java.util.List;
 public class HotelCoahJson {
 
     @JsonProperty("giata_id")
-    private int giataId;
+    private Integer giataId;
 
-    private int iff;
+    private Integer iff;
 
     private String name;
 

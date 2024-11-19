@@ -16,10 +16,12 @@ import java.util.List;
 @NoArgsConstructor
 public class HotelDTO {
 
-    @JsonProperty("giata_id")
-    private int giataId;
+    private Integer fileId;
 
-    private int iff;
+    @JsonProperty("giata_id")
+    private Integer giataId;
+
+    private Integer iff;
 
     private String name;
 

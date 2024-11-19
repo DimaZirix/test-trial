@@ -47,7 +47,7 @@ public class VideosHotelCoahJson {
         private String source;
 
         @JacksonXmlProperty(isAttribute = true)
-        private int priority;
+        private Integer priority;
 
         @JacksonXmlProperty(isAttribute = true)
         private boolean hasPlayer;
