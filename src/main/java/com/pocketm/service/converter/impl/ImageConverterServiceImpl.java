@@ -42,9 +42,12 @@ public class ImageConverterServiceImpl implements ImageConverterService {
             return;
         }
 
-        final var file = Path.of(imagePath.toString(), contentFileId + "-" + localFileId).toFile();
+        final var localFileName = contentFileId + "-" + localFileId;
+        final var file = Path.of(imagePath.toString(), localFileName).toFile();
 
         final var url = new URI(image.getUrl()).toURL();
-        FileUtils.copyURLToFile(url, file, READ_TIMEOUT, READ_TIMEOUT);
+        FileUtils.copyURLToFile(url, file, READ_TIMEOUT, READ_TIMEOUT); // TODO: replace with a http client. Get the EXT or the ContentType of the remote file.
+
+        image.setLocalFileName(localFileName);
     }
 }
